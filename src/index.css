@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* タスク情報 */
+#task-box {
+  width: 400px;
+  height: 200px;
+  background: #FFF;
+  border: solid 3px #6091d3;
+  border-radius: 5px;
+}
