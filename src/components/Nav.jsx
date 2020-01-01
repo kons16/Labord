@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router';
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleToInputTask = () => {
+    this.props.history.push('/InputPost');
+  }
+  
   render() {
     return (
       <AppBar position="static" style={{background: '#202020'}}>

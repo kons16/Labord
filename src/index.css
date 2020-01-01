@@ -12,12 +12,37 @@ code {
     monospace;
 }
 
+#finish_animation {
+  color: rgb(39, 79, 255);
+  background: -webkit-linear-gradient(0deg, rgb(39, 79, 255), rgb(228, 252, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 80px;
+}
+
 
 /* タスク情報 */
 #task-box {
+  display: inline-block;
   width: 400px;
   height: 200px;
+  margin: 0 10px 20px 10px;
   background: #FFF;
   border: solid 3px #6091d3;
   border-radius: 5px;
+}
+#title {
+  color:#6091d3;
+  font-weight: bold;
+  font-size: 26px;
+}
+#remaining {
+  color: #FF0578;
+  font-size: 100px;
+  font-weight: bold;
+  display: inline;
+}
+#buttom_block {
+  margin-left: 120px;
 }
