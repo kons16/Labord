@@ -10,6 +10,7 @@ class Task extends Component {
       diffDay: ""
     }
   }
+
   /*
   * タスクを完了済みに変更する
   */
