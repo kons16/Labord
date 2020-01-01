@@ -15,11 +15,13 @@ class Task extends Component {
   * タスクを完了済みに変更する
   */
   toFinish(id) {
+    /*
     axios.post(process.env.REACT_APP_API_URL,
                {"method": "change", "id": String(id)})
       .then(res => {
         window.location.reload();
       })
+    */
     // 完了アニメーション
     const element =  document.querySelector('#finish_animation');
     element.innerHTML = "タスク完了！";
@@ -55,7 +57,7 @@ class Task extends Component {
         <div id="task-box">
           <div id="title">{this.props.title}</div>
           <div id="name">投稿者: {this.props.name}</div>
-          <div id="limit">締め切り: {this.props.limit}</div>
+          <div id="limit">{this.props.limit} 〆</div>
           <div id="buttom_block">
             残り<div id="remaining">{this.state.diffDay}</div>日
             <Button variant="contained" color="primary" style={{ marginLeft: 70 }}
