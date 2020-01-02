@@ -15,13 +15,11 @@ class Task extends Component {
   * タスクを完了済みに変更する
   */
   toFinish(id) {
-    /*
     axios.post(process.env.REACT_APP_API_URL,
                {"method": "change", "id": String(id)})
       .then(res => {
         window.location.reload();
       })
-    */
     // 完了アニメーション
     const element =  document.querySelector('#finish_animation');
     element.innerHTML = "タスク完了！";
