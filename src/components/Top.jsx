@@ -12,6 +12,7 @@ class Top extends Component {
   }
 
   getData() {
+    console.log(process.env.REACT_APP_API_URL);
     axios.post(process.env.REACT_APP_API_URL,
                {"method": "get_task"})
       .then(res => {
