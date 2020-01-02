@@ -55,7 +55,7 @@ class InputPost extends Component {
         /><br />
         <TextField
           id="standard-search"
-          label="期限(ex: 2020年1月10日)"
+          label="期限(ex: 2020,1,10)"
           name="limit"
           type="search"
           autoComplete='off'

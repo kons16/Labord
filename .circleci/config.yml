@@ -1,9 +1,9 @@
-version: 2 # 未完成
+version: 2
  jobs:
    build:
-        working_directory: ~/repo
+        working_directory: ~/labord-react
      environment:
-            - AWS_S3_BUCKET_NAME: YOUR_BUCKET_NAME
+            - AWS_S3_BUCKET_NAME: labord-s3
      docker:
        - image: cdssnc/aws-cli
      steps:
@@ -11,4 +11,4 @@ version: 2 # 未完成
        - run:
            name: Deploy to S3
            command: |
-               aws s3 sync ~/repo s3://${AWS_S3_BUCKET_NAME}/ --exact-timestamps --delete
+               aws s3 sync ~/labord-react s3://${AWS_S3_BUCKET_NAME}/ --exact-timestamps --delete
