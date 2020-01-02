@@ -1,14 +1,49 @@
 version: 2
- jobs:
-   build:
-        working_directory: ~/labord-react
-     environment:
-            - AWS_S3_BUCKET_NAME: labord-s3
-     docker:
-       - image: cdssnc/aws-cli
-     steps:
-       - checkout
-       - run:
-           name: Deploy to S3
-           command: |
-               aws s3 sync ~/labord-react s3://${AWS_S3_BUCKET_NAME}/ --exact-timestamps --delete
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11.4
+    working_directory: ~/labord-react
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/labord-react
+          paths: build
+
+  deploy:
+    docker:
+        - image: cdssnc/aws-cli
+    working_directory: ~/labord-react
+    environment:
+      - AWS_S3_BUCKET_NAME: labord-react-s3
+    steps:
+        - checkout
+        - attach_workspace:
+            at: ~/labord-react
+        - deploy:
+              name: "Deploy to S3"
+              command: |
+                  aws s3 sync ./build s3://${AWS_S3_BUCKET_NAME}/ --exact-timestamps --delete
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

@@ -36,8 +36,11 @@ class Task extends Component {
   calcLimit() {
     const splitedLimit = this.props.limit.split(/年|月|日/g);
     // splitedLimit : ["2020", "1", "10", ""]
-    const reshapeLimit = splitedLimit[0] + "/" + splitedLimit[1] + "/"
-                          + splitedLimit[2] + " " + "24" + ":" + "00" + ":" + "00";
+    const a = splitedLimit[0] + "/";
+    const b = splitedLimit[1] + "/";
+    const c =  a + b + splitedLimit[2]
+    const d = " 24:00:00";
+    const reshapeLimit = c + d;
     const limit = new Date(reshapeLimit);
     const now = new Date();
     const diffDay = Math.floor((limit - now) / (1000 * 60 * 60 * 24));
