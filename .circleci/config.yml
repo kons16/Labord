@@ -5,7 +5,6 @@ jobs:
       - image: circleci/node:8.11.4
     working_directory: ~/labord-react
     steps:
-      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -28,7 +27,6 @@ jobs:
     environment:
       - AWS_S3_BUCKET_NAME: labord-react-s3
     steps:
-        - checkout
         - attach_workspace:
             at: ~/labord-react
         - deploy:
