@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Top from './components/Top';
 import InputPost from './components/InputPost';
@@ -12,7 +12,7 @@ class App extends Component {
       window.onload();
     }
   }
-  
+
   render() {
     return (
       <div className="App">
