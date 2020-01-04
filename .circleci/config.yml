@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:8.11.4
     working_directory: ~/labord-react
     steps:
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -15,6 +16,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: "Inport env"
+          command: |
+            chmod +x import_env.sh
+            ./import_env.sh
       - run: yarn build
       - persist_to_workspace:
           root: ~/labord-react
@@ -27,6 +33,7 @@ jobs:
     environment:
       - AWS_S3_BUCKET_NAME: labord-react-s3
     steps:
+        - checkout
         - attach_workspace:
             at: ~/labord-react
         - deploy:

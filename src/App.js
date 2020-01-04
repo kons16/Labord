@@ -6,6 +6,12 @@ import InputPost from './components/InputPost';
 import Nav from './components/Nav';
 
 class App extends Component {
+  componentDidMount() {
+    const result = prompt("パスワードを入力してください");
+    if(result !== process.env.REACT_APP_PASS){
+      window.onload();
+    }
+  }
   render() {
     return (
       <div className="App">
