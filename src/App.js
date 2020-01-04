@@ -12,6 +12,7 @@ class App extends Component {
       window.onload();
     }
   }
+  
   render() {
     return (
       <div className="App">
