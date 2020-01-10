@@ -22,7 +22,6 @@ jobs:
             chmod +x import_env.sh
             ./import_env.sh
       - run: yarn build
-      - run: rm ~/labord-react/.env
       - persist_to_workspace:
           root: ~/labord-react
           paths: build
