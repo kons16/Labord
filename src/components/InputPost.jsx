@@ -11,7 +11,6 @@ class InputPost extends Component {
       title: "",
       name: "",
       limit: "",
-      pass: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.createTask = this.createTask.bind(this);
@@ -22,7 +21,6 @@ class InputPost extends Component {
       [e.target.name]: e.target.value,
       [e.target.name]: e.target.value,
       [e.target.name]: e.target.value,
-      [e.target.name]: e.target.value
     });
   }
 
@@ -30,19 +28,16 @@ class InputPost extends Component {
   * タスクをLambdaにPOSTする
   */
   createTask() {
-    if(this.state.pass === process.env.REACT_APP_PASS){
-      console.log(this.state.limit);
-      axios.post(process.env.REACT_APP_API_URL,
-                {"method": "insert",
-                  "name": this.state.name,
-                  "title": this.state.title,
-                  "limit": this.state.limit,
-                  "content": "content"
-                })
-        .then(res => {
-          this.props.history.push('/');
-        })
-    }
+    axios.post(process.env.REACT_APP_API_URL,
+              {"method": "insert",
+                "name": this.state.name,
+                "title": this.state.title,
+                "limit": this.state.limit,
+                "content": "content"
+              })
+      .then(res => {
+        this.props.history.push('/');
+      })
   }
 
   render() {
@@ -70,15 +65,6 @@ class InputPost extends Component {
           id="standard-search"
           label="投稿者名"
           name="name"
-          type="search"
-          autoComplete='off'
-          onChange={this.handleChange}
-          style={{ marginTop: 30, width: 450 }}
-        /><br />
-        <TextField
-          id="standard-search"
-          label="パスワード"
-          name="pass"
           type="search"
           autoComplete='off'
           onChange={this.handleChange}
